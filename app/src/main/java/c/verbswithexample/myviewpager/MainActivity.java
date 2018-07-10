@@ -1,5 +1,6 @@
 package c.verbswithexample.myviewpager;
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,6 +13,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // prepare the data model
+        List<DataModel> itemList = getDataList();
+        // locate the view pager in mainactivity.xml
+        ViewPager viewPager = findViewById(R.id.viewPagerId);
+
+        // create instance of pagerAdapter
+        CustomPagerAdapter customPagerAdapter = new CustomPagerAdapter(this,itemList);
+
+        // bind the adapter to view pager
+        viewPager.setAdapter(customPagerAdapter);
+
+
     }
 
     public List<DataModel> getDataList(){
